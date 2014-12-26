@@ -54,15 +54,13 @@ func (mr *MapReduce) DispatchWorker(jobNum int) {
 
 func (mr *MapReduce) RequestJobs() {
   var numJobs int;
-  if mr.currentPhase == Map {
-    numJobs = mr.nMap
-  } else {
-    numJobs = mr.nReduce
+  if mr.currentPhase == Map { 
+    numJobs = mr.nMap 
+  } else { 
+    numJobs = mr.nReduce 
   }
-  for i := 0; i < numJobs; i++ {
-    go func(i int) {
-      mr.requestChannel <- i
-    }(i)
+  for i := 0; i < numJobs; i++ { 
+    go func(i int) { mr.requestChannel <- i }(i) 
   }
 }
 
