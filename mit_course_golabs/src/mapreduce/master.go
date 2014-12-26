@@ -27,21 +27,17 @@ func (mr *MapReduce) KillWorkers() *list.List {
 
 func (mr *MapReduce) DispatchWorker(jobNum int) {
   workerAddr := <- mr.registerChannel
-
   mr.Workers[workerAddr] = &WorkerInfo { address: workerAddr }
-
   args := &DoJobArgs { 
     File: mr.file, 
     Operation: mr.currentPhase, 
-    JobNumber: jobNum, 
+    JobNumber: jobNum,
   }
-
   if (mr.currentPhase == Map) {
     args.NumOtherPhase = mr.nReduce
   } else {
     args.NumOtherPhase = mr.nMap
   }
-
   var reply DoJobReply;
   ok := call(workerAddr, "Worker.DoJob", args, &reply)
   if ok == true {
@@ -56,8 +52,6 @@ func (mr *MapReduce) DispatchWorker(jobNum int) {
   }
 }
 
-// if jobType == Map, request nMap jobs on mapReqChannel
-// else, if jobType == Reduce, request nReduce jobs on reduceReqChannel
 func (mr *MapReduce) RequestJobs() {
   var numJobs int;
   if mr.currentPhase == Map {
@@ -75,13 +69,9 @@ func (mr *MapReduce) RequestJobs() {
 func (mr *MapReduce) RunMaster() *list.List {
   numJobsDone := 0
   mr.currentPhase = Map
-
   mr.successChannel = make(chan int)
   mr.requestChannel = make(chan int)
-
-  // Request map jobs
   mr.RequestJobs()
-
   for {
     select {
       case reqJobId := <- mr.requestChannel:
