@@ -1,0 +1,147 @@
+Test: Basic mapreduce ...
+Run mapreduce job /var/tmp/824-275820/mr17543-master 824-mrinput.txt
+Split 824-mrinput.txt
+tick
+Requesting mapper #%d 0
+Requesting mapper #%d 1
+Requesting mapper #%d 2
+Requesting mapper #%d 3
+received map request
+tick
+received map request
+tick
+received map request
+tick
+received map request
+tick
+Found worker at /var/tmp/824-275820/mr17543-worker0
+Jobnum: 0 found worker
+Jobnum: 0 added worker
+Jobnum: 0 made args
+Jobnum: 0 fixed mapper args
+Calling job %s with ID %d Map 0
+Found worker at /var/tmp/824-275820/mr17543-worker1
+Jobnum: 1 found worker
+Jobnum: 1 added worker
+Jobnum: 1 made args
+Jobnum: 1 fixed mapper args
+Calling job %s with ID %d Map 1
+Found worker at /var/tmp/824-275820/mr17543-worker8
+Jobnum: 2 found worker
+Jobnum: 2 added worker
+Jobnum: 2 made args
+Jobnum: 2 fixed mapper args
+Calling job %s with ID %d Map 2
+Dojob /var/tmp/824-275820/mr17543-worker8 job 2 file 824-mrinput.txt operation Map N 2
+DoMap: read split mrtmp.824-mrinput.txt-2 972
+Dojob /var/tmp/824-275820/mr17543-worker1 job 1 file 824-mrinput.txt operation Map N 2
+DoMap: read split mrtmp.824-mrinput.txt-1 976
+Dojob /var/tmp/824-275820/mr17543-worker0 job 0 file 824-mrinput.txt operation Map N 2
+Found worker at /var/tmp/824-275820/mr17543-worker2
+Jobnum: 3 found worker
+Jobnum: 3 added worker
+Jobnum: 3 made args
+Jobnum: 3 fixed mapper args
+Calling job %s with ID %d Map 3
+Job succeeded
+Job number 2 succeeded
+tick
+DoMap: read split mrtmp.824-mrinput.txt-0 974
+Job succeeded
+Job number 1 succeeded
+tick
+Dojob /var/tmp/824-275820/mr17543-worker2 job 3 file 824-mrinput.txt operation Map N 2
+DoMap: read split mrtmp.824-mrinput.txt-3 968
+Job succeeded
+Job number 0 succeeded
+tick
+Job succeeded
+Job number 3 succeeded
+tick
+Requesting reducer #%d 0
+Requesting reducer #%d 1
+received reduce request
+tick
+received reduce request
+tick
+Found worker at /var/tmp/824-275820/mr17543-worker3
+Jobnum: 0 found worker
+Jobnum: 0 added worker
+Jobnum: 0 made args
+Jobnum: 0 fixed reducer args
+Calling job %s with ID %d Reduce 0
+Found worker at /var/tmp/824-275820/mr17543-worker5
+Jobnum: 1 found worker
+Jobnum: 1 added worker
+Jobnum: 1 made args
+Jobnum: 1 fixed reducer args
+Calling job %s with ID %d Reduce 1
+Dojob /var/tmp/824-275820/mr17543-worker5 job 1 file 824-mrinput.txt operation Reduce N 4
+DoReduce: read mrtmp.824-mrinput.txt-0-1
+Dojob /var/tmp/824-275820/mr17543-worker3 job 0 file 824-mrinput.txt operation Reduce N 4
+DoReduce: read mrtmp.824-mrinput.txt-0-0
+DoReduce: read mrtmp.824-mrinput.txt-1-1
+DoReduce: read mrtmp.824-mrinput.txt-1-0
+DoReduce: read mrtmp.824-mrinput.txt-2-1
+DoReduce: read mrtmp.824-mrinput.txt-2-0
+DoReduce: read mrtmp.824-mrinput.txt-3-1
+DoReduce: read mrtmp.824-mrinput.txt-3-0
+Job succeeded
+Job number 1 succeeded
+tick
+Job succeeded
+Job number 0 succeeded
+DoWork: shutdown %s
+ /var/tmp/824-275820/mr17543-worker5
+DoWork: shutdown %s
+ /var/tmp/824-275820/mr17543-worker0
+DoWork: shutdown %s
+ /var/tmp/824-275820/mr17543-worker1
+DoWork: shutdown %s
+ /var/tmp/824-275820/mr17543-worker8
+DoWork: shutdown %s
+ /var/tmp/824-275820/mr17543-worker2
+DoWork: shutdown %s
+ /var/tmp/824-275820/mr17543-worker3
+Merge: read mrtmp.824-mrinput.txt-res-0
+Merge: read mrtmp.824-mrinput.txt-res-1
+/var/tmp/824-275820/mr17543-master: MapReduce done
+  ... Basic Passed
+Test: One Failure mapreduce ...
+Run mapreduce job /var/tmp/824-275820/mr17543-master 824-mrinput.txt
+Split 824-mrinput.txt
+tick
+Requesting mapper #%d 0
+Requesting mapper #%d 1
+Requesting mapper #%d 2
+Requesting mapper #%d 3
+received map request
+tick
+received map request
+tick
+received map request
+tick
+received map request
+tick
+Found worker at /var/tmp/824-275820/mr17543-worker0
+Jobnum: 0 found worker
+Jobnum: 0 added worker
+Jobnum: 0 made args
+Jobnum: 0 fixed mapper args
+Calling job %s with ID %d Map 0
+Found worker at /var/tmp/824-275820/mr17543-worker1
+Jobnum: 1 found worker
+Jobnum: 1 added worker
+Jobnum: 1 made args
+Jobnum: 1 fixed mapper args
+Calling job %s with ID %d Map 1
+Dojob /var/tmp/824-275820/mr17543-worker1 job 1 file 824-mrinput.txt operation Map N 2
+DoMap: read split mrtmp.824-mrinput.txt-1 976
+Dojob /var/tmp/824-275820/mr17543-worker0 job 0 file 824-mrinput.txt operation Map N 2
+DoMap: read split mrtmp.824-mrinput.txt-0 974
+Job succeeded
+Job number 1 succeeded
+tick
+Job succeeded
+Job number 0 succeeded
+tick
